@@ -1,0 +1,145 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension="Designer.cs" #>
+using System;
+using System.CodeDom.Compiler;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+
+<# if (!string.IsNullOrEmpty(Namespace)) { #>
+namespace <#= Namespace #>
+{
+<# } #>
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    [GeneratedCode("<#= ToolName #>", "<#= ToolVersion #>")]
+    [DebuggerNonUserCode]
+    [CompilerGenerated]
+    <#= AccessModifer #> static class <#= ClassName #>
+    {
+        private static ResourceManager resourceManager;
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        public static CultureInfo Culture { get; set; }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        public static ResourceManager ResourceManager
+        {
+            get
+            {
+                if (resourceManager == null)
+                {
+                    resourceManager = new ResourceManager("<#= ResourceName #>", typeof(<#= ClassName #>).GetTypeInfo().Assembly);
+                }
+
+                return resourceManager;
+            }
+        }
+
+
+<#  foreach (StringResource res in StringResources)
+    {
+        if (res.IsFormatString)
+        {
+#>
+
+        /// <summary>
+        ///   Gets a localized format string similar to "<#= res.Value #>".
+        /// </summary>
+        public static string <#= res.Name #>Raw
+        {
+            get { return ResourceManager.GetString("<#= res.Name #>", Culture); }
+        }
+
+        /// <summary>
+        ///   Gets a formatted, localized string similar to "<#= res.Value #>".
+        /// </summary>
+        public static string <#= res.Name #>(<#= res.FormatParameters #>)
+        {
+            return string.Format(<#= res.Name #>Raw, <#= res.FormatCallParameters #>);
+        }
+<#
+        }
+        else
+        {
+#>
+
+        /// <summary>
+        ///   Gets a localized string similar to "<#= res.Value #>".
+        /// </summary>
+        public static string <#= res.Name #>
+        {
+            get { return ResourceManager.GetString("<#= res.Name #>", Culture); }
+        }
+<#
+        }
+    }
+
+    foreach (TextFileResource res in TextFileResources)
+    {
+#>
+
+        /// <summary>
+        ///   Gets a localized resource of type string.
+        /// </summary>
+        public static string <#= res.Name #>
+        {
+            get { return ResourceManager.GetString("<#= res.Name #>", Culture); }
+        }
+<#
+    }
+
+    foreach (ObjectResource res in ObjectResources)
+    {
+#>
+
+        /// <summary>
+        ///   Looks up a localized resource of type <#= res.Type #>.
+        /// </summary>
+        public static <#= res.Type #> <#= res.Name #>
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("<#= res.Name #>", Culture);
+                return (<#= res.Type #>)obj;
+            }
+        }
+<#
+    }
+
+    foreach (StreamResource res in StreamResources)
+    {
+#>
+
+        /// <summary>
+        ///   Looks up a localized resource of type UnmanagedMemoryStream.
+        /// </summary>
+        public static UnmanagedMemoryStream <#= res.Name #>
+        {
+            get
+            {
+                return ResourceManager.GetStream("<#= res.Name #>", Culture);
+            }
+        }
+<#
+    }
+#>
+    }
+<# if (!string.IsNullOrEmpty(Namespace)) { #>
+}
+<# } #>
