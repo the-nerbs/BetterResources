@@ -135,16 +135,42 @@ namespace BetterResources
             
             #line default
             #line hidden
-            this.Write("\".\r\n        /// </summary>\r\n        public static string ");
+            this.Write("\".\r\n");
             
-            #line 64 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 63 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 67 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 68 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static string ");
+            
+            #line 72 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("Raw\r\n        {\r\n            get { return ResourceManager.GetString(\"");
             
-            #line 66 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 74 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
@@ -152,42 +178,68 @@ namespace BetterResources
             this.Write("\", Culture); }\r\n        }\r\n\r\n        /// <summary>\r\n        ///   Gets a formatte" +
                     "d, localized string similar to \"");
             
-            #line 70 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 78 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Value));
             
             #line default
             #line hidden
-            this.Write("\".\r\n        /// </summary>\r\n        public static string ");
+            this.Write("\".\r\n");
             
-            #line 72 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 79 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 83 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 84 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static string ");
+            
+            #line 88 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 72 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 88 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.FormatParameters));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return string.Format(");
             
-            #line 74 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 90 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("Raw, ");
             
-            #line 74 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 90 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.FormatCallParameters));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n");
             
-            #line 76 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 92 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
 
         }
         else
@@ -198,28 +250,54 @@ namespace BetterResources
             #line hidden
             this.Write("\r\n        /// <summary>\r\n        ///   Gets a localized string similar to \"");
             
-            #line 83 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 99 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Value));
             
             #line default
             #line hidden
-            this.Write("\".\r\n        /// </summary>\r\n        public static string ");
+            this.Write("\".\r\n");
             
-            #line 85 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 100 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 104 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 105 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static string ");
+            
+            #line 109 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get { return ResourceManager.GetString(\"");
             
-            #line 87 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 111 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\", Culture); }\r\n        }\r\n");
             
-            #line 89 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 113 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
 
         }
     }
@@ -231,23 +309,49 @@ namespace BetterResources
             #line default
             #line hidden
             this.Write("\r\n        /// <summary>\r\n        ///   Gets a localized resource of type string.\r" +
-                    "\n        /// </summary>\r\n        public static string ");
+                    "\n");
             
-            #line 100 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 123 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 127 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 128 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static string ");
+            
+            #line 132 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get { return ResourceManager.GetString(\"");
             
-            #line 102 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 134 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\", Culture); }\r\n        }\r\n");
             
-            #line 104 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 136 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
 
     }
 
@@ -259,21 +363,47 @@ namespace BetterResources
             #line hidden
             this.Write("\r\n        /// <summary>\r\n        ///   Looks up a localized resource of type ");
             
-            #line 112 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 144 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Type));
             
             #line default
             #line hidden
-            this.Write(".\r\n        /// </summary>\r\n        public static ");
+            this.Write(".\r\n");
             
-            #line 114 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 145 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 149 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 150 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static ");
+            
+            #line 154 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 114 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 154 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
@@ -281,21 +411,21 @@ namespace BetterResources
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                object obj = Resourc" +
                     "eManager.GetObject(\"");
             
-            #line 118 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 158 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\", Culture);\r\n                return (");
             
-            #line 119 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 159 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Type));
             
             #line default
             #line hidden
             this.Write(")obj;\r\n            }\r\n        }\r\n");
             
-            #line 122 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 162 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
 
     }
 
@@ -306,10 +436,35 @@ namespace BetterResources
             #line default
             #line hidden
             this.Write("\r\n        /// <summary>\r\n        ///   Looks up a localized resource of type Unma" +
-                    "nagedMemoryStream.\r\n        /// </summary>\r\n        public static UnmanagedMemor" +
-                    "yStream ");
+                    "nagedMemoryStream.\r\n");
             
-            #line 132 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 171 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            if (res.HasComment)
+            {
+
+            
+            #line default
+            #line hidden
+            this.Write("        ///   ");
+            
+            #line 175 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(res.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 176 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+
+            }
+
+            
+            #line default
+            #line hidden
+            this.Write("        /// </summary>\r\n        public static UnmanagedMemoryStream ");
+            
+            #line 180 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
@@ -317,14 +472,14 @@ namespace BetterResources
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return ResourceManag" +
                     "er.GetStream(\"");
             
-            #line 136 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 184 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(res.Name));
             
             #line default
             #line hidden
             this.Write("\", Culture);\r\n            }\r\n        }\r\n");
             
-            #line 139 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 187 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
 
     }
 
@@ -333,14 +488,14 @@ namespace BetterResources
             #line hidden
             this.Write("    }\r\n");
             
-            #line 143 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 191 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
  if (!string.IsNullOrEmpty(Namespace)) { 
             
             #line default
             #line hidden
             this.Write("}\r\n");
             
-            #line 145 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
+            #line 193 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
  } 
             
             #line default

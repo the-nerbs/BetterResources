@@ -123,7 +123,7 @@ namespace BetterResources
                     else if (isString)
                     {
                         template.TextFileResources.Add(
-                            new TextFileResource(resxNode.Name)
+                            new TextFileResource(resxNode.Name, resxNode.Comment)
                         );
                     }
                     else
@@ -133,13 +133,13 @@ namespace BetterResources
                         if (fullTypeName == typeof(MemoryStream).FullName)
                         {
                             template.StreamResources.Add(
-                                new StreamResource(resxNode.Name)
+                                new StreamResource(resxNode.Name, resxNode.Comment)
                             );
                         }
                         else
                         {
                             template.ObjectResources.Add(
-                                new ObjectResource(resxNode.Name, fullTypeName)
+                                new ObjectResource(resxNode.Name, fullTypeName, resxNode.Comment)
                             );
                         }
                     }

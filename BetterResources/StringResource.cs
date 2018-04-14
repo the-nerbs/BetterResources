@@ -57,6 +57,11 @@ namespace BetterResources
             get { return _fmtCallParams; }
         }
 
+        public bool HasComment
+        {
+            get { return !string.IsNullOrEmpty(Comment); }
+        }
+
 
         public StringResource(string name, string value, string comment)
         {
@@ -96,7 +101,14 @@ namespace BetterResources
                     {
                         args = ParseFormatArgs(formatArgMatches);
 
-                        comment = comment.Substring(rbraceIndex).TrimStart();
+                        if (rbraceIndex < (comment.Length - 1))
+                        {
+                            comment = comment.Substring(rbraceIndex+1).TrimStart();
+                        }
+                        else
+                        {
+                            comment = string.Empty;
+                        }
                     }
                 }
             }

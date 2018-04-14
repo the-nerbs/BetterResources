@@ -9,10 +9,18 @@ namespace BetterResources
     sealed class StreamResource
     {
         public string Name { get; }
+        public string Comment { get; }
 
-        public StreamResource(string name)
+        public bool HasComment
+        {
+            get { return !string.IsNullOrEmpty(Comment); }
+        }
+
+
+        public StreamResource(string name, string comment)
         {
             Name = name;
+            Comment = comment;
         }
     }
 }

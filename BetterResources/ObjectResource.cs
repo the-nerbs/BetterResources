@@ -10,12 +10,19 @@ namespace BetterResources
     {
         public string Name { get; }
         public string Type { get; }
+        public string Comment { get; }
+
+        public bool HasComment
+        {
+            get { return !string.IsNullOrEmpty(Comment); }
+        }
 
 
-        public ObjectResource(string name, string type)
+        public ObjectResource(string name, string type, string comment)
         {
             Name = name;
             Type = type;
+            Comment = comment;
         }
     }
 }

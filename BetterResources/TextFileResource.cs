@@ -9,11 +9,18 @@ namespace BetterResources
     sealed class TextFileResource
     {
         public string Name { get; }
+        public string Comment { get; }
+
+        public bool HasComment
+        {
+            get { return !string.IsNullOrEmpty(Comment); }
+        }
 
 
-        public TextFileResource(string name)
+        public TextFileResource(string name, string comment)
         {
             Name = name;
+            Comment = comment;
         }
     }
 }
