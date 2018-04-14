@@ -20,7 +20,7 @@ namespace BetterResources
     
     #line 1 "E:\Projects\BetterResources\BetterResources\ResourceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ResourceTemplate : ResourceTemplateBase
+    internal partial class ResourceTemplate : ResourceTemplateBase
     {
 #line hidden
         /// <summary>
@@ -511,7 +511,7 @@ namespace BetterResources
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class ResourceTemplateBase
+    internal class ResourceTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

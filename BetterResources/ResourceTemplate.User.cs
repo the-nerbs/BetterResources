@@ -8,15 +8,15 @@ namespace BetterResources
 {
     partial class ResourceTemplate
     {
-        internal string Namespace { get; set; }
-        internal bool IsPublic { get; set; }
-        internal string ClassName { get; set; }
-        internal string ResourceName { get; set; }
+        public string Namespace { get; set; }
+        public bool IsPublic { get; set; }
+        public string ClassName { get; set; }
+        public string ResourceName { get; set; }
 
-        internal List<StringResource> StringResources { get; } = new List<StringResource>();
-        internal List<TextFileResource> TextFileResources { get; } = new List<TextFileResource>();
-        internal List<ObjectResource> ObjectResources { get; } = new List<ObjectResource>();
-        internal List<StreamResource> StreamResources { get; } = new List<StreamResource>();
+        public List<StringResource> StringResources { get; } = new List<StringResource>();
+        public List<TextFileResource> TextFileResources { get; } = new List<TextFileResource>();
+        public List<ObjectResource> ObjectResources { get; } = new List<ObjectResource>();
+        public List<StreamResource> StreamResources { get; } = new List<StreamResource>();
 
         private string ToolName
         {

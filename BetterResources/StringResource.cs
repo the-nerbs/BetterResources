@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BetterResources
 {
-    public sealed class StringResource
+    sealed class StringResource
     {
         // Note: C# type names are non-regular (can be arbitrarily-nested generics), so we
         // just allow a general soup of identifier characters, angle brackets, and dots. If the
