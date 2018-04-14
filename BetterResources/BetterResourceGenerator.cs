@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Resources;
 using System.Collections;
 using System.ComponentModel.Design;
+using System.Diagnostics;
+using System.IO;
+using System.Resources;
 
 namespace BetterResources
 {
@@ -108,41 +105,63 @@ namespace BetterResources
             {
                 if (entry.Value is ResXDataNode resxNode)
                 {
-                    string typeName = resxNode.GetValueTypeName(typeResolver);
-
-                    bool isString = (typeName?.Contains(typeof(string).FullName) == true);
-
-                    if (isString
-                        && resxNode.FileRef == null)
+                    try
                     {
-                        string str = (string)resxNode.GetValue(typeResolver);
-                        template.StringResources.Add(
-                            new StringResource(resxNode.Name, str, resxNode.Comment)
-                        );
-                    }
-                    else if (isString)
-                    {
-                        template.TextFileResources.Add(
-                            new TextFileResource(resxNode.Name, resxNode.Comment)
-                        );
-                    }
-                    else
-                    {
-                        string fullTypeName = typeName.Substring(0, typeName.IndexOf(','));
+                        string typeName = resxNode.GetValueTypeName(typeResolver);
 
-                        if (fullTypeName == typeof(MemoryStream).FullName)
+                        bool isString = (typeName.Contains(typeof(string).FullName) == true);
+
+                        if (isString
+                            && resxNode.FileRef == null)
                         {
-                            template.StreamResources.Add(
-                                new StreamResource(resxNode.Name, resxNode.Comment)
+                            string str = (string)resxNode.GetValue(typeResolver);
+                            template.StringResources.Add(
+                                new StringResource(resxNode.Name, str, resxNode.Comment)
+                            );
+                        }
+                        else if (isString)
+                        {
+                            template.TextFileResources.Add(
+                                new TextFileResource(resxNode.Name, resxNode.Comment)
                             );
                         }
                         else
                         {
-                            template.ObjectResources.Add(
-                                new ObjectResource(resxNode.Name, fullTypeName, resxNode.Comment)
-                            );
+                            string fullTypeName = typeName.Substring(0, typeName.IndexOf(','));
+
+                            if (fullTypeName == typeof(MemoryStream).FullName)
+                            {
+                                template.StreamResources.Add(
+                                    new StreamResource(resxNode.Name, resxNode.Comment)
+                                );
+                            }
+                            else
+                            {
+                                template.ObjectResources.Add(
+                                    new ObjectResource(resxNode.Name, fullTypeName, resxNode.Comment)
+                                );
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine(
+                            $"Caught exception while reading resource {entry.Key}: " + ex,
+                            nameof(BetterResourceGenerator)
+                        );
+
+                        reporter.Report(
+                            DiagnosticSeverity.Error,
+                            $"Discarded resource {entry.Key} due to error: {ex.Message}."
+                        );
+                    }
+                }
+                else
+                {
+                    reporter.Report(
+                        DiagnosticSeverity.Warning,
+                        $"Discarded resource {entry.Key} as it is not a ResXDataNode."
+                    );
                 }
             }
 

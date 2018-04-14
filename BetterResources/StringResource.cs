@@ -18,7 +18,7 @@ namespace BetterResources
         );
 
         private static readonly Regex FormatInsertPattern = new Regex(
-            @"{ (?<name>[A-Z0-9_]+) (?<align>[,][+-]?\d+)? (?<fmt>[^}]+)? }",
+            @"{ (?<index>\d+) (?<align>[,][+-]?\d+)? (?<fmt>[^}]+)? }",
             RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture
         );
 
@@ -99,7 +99,7 @@ namespace BetterResources
 
                     if (isFormatString)
                     {
-                        args = ParseFormatArgs(formatArgMatches);
+                        args = ParseFormatArgs(text, formatArgMatches);
 
                         if (rbraceIndex < (comment.Length - 1))
                         {
@@ -137,9 +137,10 @@ namespace BetterResources
         /// <summary>
         /// Parses the format arguments from the resource's comment.
         /// </summary>
+        /// <param name="text">The resource string value.</param>
         /// <param name="formatArgs">The collection of regex matches from the resource's comment.</param>
         /// <returns>A mapping of the resource names to <see cref="FormatArgument"/> objects.</returns>
-        private static IReadOnlyDictionary<string,FormatArgument> ParseFormatArgs(MatchCollection formatArgs)
+        private static IReadOnlyDictionary<string,FormatArgument> ParseFormatArgs(string text, MatchCollection formatArgs)
         {
             var argsByName = new Dictionary<string, FormatArgument>();
 
@@ -183,6 +184,19 @@ namespace BetterResources
                 }
             }
 
+            // validate the number of arguments vs the highest index in the format string
+            MatchCollection inserts = FormatInsertPattern.Matches(text);
+            int maxIndex = inserts
+                .OfType<Match>()
+                .Select(m => m.Groups["index"].Value)
+                .Select(int.Parse)
+                .Max();
+
+            if ((argsByName.Count - 1) < maxIndex)
+            {
+                throw new InvalidOperationException($"string expects at least {maxIndex+1} arguments, but only {argsByName.Count} were given.");
+            }
+
             return argsByName;
         }
 
@@ -197,7 +211,7 @@ namespace BetterResources
 
             foreach (Match m in matches)
             {
-                string name = m.Groups["name"].Value;
+                string name = m.Groups["index"].Value;
 
                 if (!args.TryGetValue(name, out _))
                 {
