@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="BetterResourcesCustomTool.cs" />
     <Compile Include="BetterResourcesPackage.cs" />
+    <Compile Include="ContextGuids.cs" />
     <Compile Include="InternalBetterResourcesGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicBetterResourcesGenerator.cs" />

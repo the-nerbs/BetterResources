@@ -15,7 +15,13 @@ namespace BetterResources.VSTool
     [CodeGeneratorRegistration(
         typeof(PublicBetterResourcesGenerator),
         "Nerbs Better Resources Generator (public class)",
-        VSConstants.UICONTEXT.CSharpProject_string,
+        ContextGuids.CSharpDesktopProjectGuid,
+        GeneratorRegKeyName = nameof(PublicBetterResourcesGenerator),
+        GeneratesDesignTimeSource = true)]
+    [CodeGeneratorRegistration(
+        typeof(PublicBetterResourcesGenerator),
+        "Nerbs Better Resources Generator (public class)",
+        ContextGuids.CSharpNetStandardProjectGuid,
         GeneratorRegKeyName = nameof(PublicBetterResourcesGenerator),
         GeneratesDesignTimeSource = true)]
     [ProvideObject(typeof(PublicBetterResourcesGenerator), RegisterUsing = RegistrationMethod.CodeBase)]
